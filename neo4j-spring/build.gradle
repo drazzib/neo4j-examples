@@ -26,6 +26,7 @@ repositories {
 
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'com.google.guava:guava:14.0.1'
     compile "org.neo4j:neo4j:${neo4jServerVersion}"
 
     compile "org.springframework:spring-core:${springVersion}"

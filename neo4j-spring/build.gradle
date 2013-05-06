@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+neo4jServerVersion = "1.9.RC2"
+springVersion = "3.1.4.RELEASE"
+springDataGraphVersion = "2.2.1.RELEASE"
+aspectjVersion = "1.6.12"
+
+apply from: 'gradle/springdataneo4j.gradle'
+
+configurations {
+    runtime
+    testCompile
+}
+
+repositories {
+    mavenCentral()
+    // for org.neo4j:neo4j-cypher-dsl
+    maven { url "http://m2.neo4j.org/content/repositories/releases/" }
+    mavenRepo urls: "http://maven.springframework.org/release"
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile "org.neo4j:neo4j:${neo4jServerVersion}"
+
+    compile "org.springframework:spring-core:${springVersion}"
+    compile "org.springframework.data:spring-data-neo4j:${springDataGraphVersion}"
+    compile 'cglib:cglib-nodep:2.2'
+    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final'
+    compile 'javax.validation:validation-api:1.0.0.GA'
+
+    // Aspects
+    compile "org.springframework:spring-aspects:${springVersion}"
+    compile "org.springframework.data:spring-data-neo4j-aspects:${springDataGraphVersion}"
+
+    testCompile "junit:junit:4.8.1"
+    testCompile "org.springframework:spring-test:${springVersion}"
+}
+
+// Generate wrapper for Gradle
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.5'
+}

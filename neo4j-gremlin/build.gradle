@@ -19,12 +19,12 @@ dependencies {
 
     compile "org.neo4j:neo4j:${neo4jServerVersion}"
     compile "org.neo4j:neo4j-rest-graphdb:${neo4jRestVersion}"
+
     compile 'com.tinkerpop.gremlin:gremlin-java:2.3.0'
+    compile 'com.tinkerpop.blueprints:blueprints-neo4j-graph:2.3.0'
 
     testCompile 'junit:junit-dep:4.11'
     testCompile 'org.hamcrest:hamcrest-all:1.3'
-    // Access to Neo4j testing facilities: TestGraphDatabaseFactory
-    testCompile "org.neo4j:neo4j-kernel:${neo4jServerVersion}:tests@jar"
     testCompile 'org.slf4j:slf4j-simple:1.7.5'
 }
 

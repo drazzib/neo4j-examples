@@ -15,17 +15,17 @@ dependencies{
 
 task compileJava(overwrite: true, description: 'Compiles AspectJ Source', type: Ajc) {
     dependsOn processResources
-    sourceSet = sourceSets.main
-    inputs.files(sourceSets.main.java.srcDirs)
-    outputs.dir(sourceSets.main.output.classesDir)
+    sourceSet = project.sourceSets.main
+    inputs.files(project.sourceSets.main.java.srcDirs)
+    outputs.dir(project.sourceSets.main.output.classesDir)
     aspectPath = configurations.aspectpath
 }
 
 task compileTestJava(overwrite: true, description: 'Compiles AspectJ Test Source', type: Ajc) {
     dependsOn processTestResources, compileJava, jar
-    sourceSet = sourceSets.test
-    inputs.files(sourceSets.test.java.srcDirs)
-    outputs.dir(sourceSets.main.output.classesDir)
+    sourceSet = project.sourceSets.test
+    inputs.files(project.sourceSets.test.java.srcDirs)
+    outputs.dir(project.sourceSets.main.output.classesDir)
     aspectPath = files(configurations.aspectpath, jar.archivePath)
 }
 
@@ -39,7 +39,9 @@ class Ajc extends DefaultTask {
         logger.info "Running ajc ..."
 
         ant.taskdef(resource: "org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: project.configurations.ajtools.asPath)
-        ant.iajc(classpath: sourceSet.compileClasspath.asPath, fork: 'true', destDir: sourceSets.main.output.classesDir.absolutePath,
+        ant.iajc(classpath: sourceSet.compileClasspath.asPath,
+                fork: 'true',
+                destDir: sourceSet.output.classesDir.absolutePath,
                 source: project.sourceCompatibility,
                 target: project.targetCompatibility,
                 aspectPath: aspectPath.asPath, sourceRootCopyFilter: '**/*.java', showWeaveInfo: 'true', Xlint: "ignore") {

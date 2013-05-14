@@ -30,7 +30,10 @@ dependencies {
     compile "org.neo4j:neo4j:${neo4jServerVersion}"
 
     compile "org.springframework:spring-core:${springVersion}"
+    // Provides Repository based Object <-> Graph Mapping
     compile "org.springframework.data:spring-data-neo4j:${springDataGraphVersion}"
+    // Transparent remote access to Neo4j-Server via its REST Api
+    compile "org.springframework.data:spring-data-neo4j-rest:${springDataGraphVersion}"
     compile 'cglib:cglib-nodep:2.2'
     compile 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final'
     compile 'javax.validation:validation-api:1.0.0.GA'
@@ -41,6 +44,9 @@ dependencies {
 
     testCompile "junit:junit:4.8.1"
     testCompile "org.springframework:spring-test:${springVersion}"
+    // Access to Neo4j testing facilities: TestGraphDatabaseFactory
+    testCompile "org.neo4j:neo4j-kernel:${neo4jServerVersion}:tests@jar"
+    testRuntime 'org.slf4j:slf4j-simple:1.7.5'
 }
 
 // Generate wrapper for Gradle

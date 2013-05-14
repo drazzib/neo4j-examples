@@ -36,7 +36,7 @@ import static org.junit.internal.matchers.StringContains.containsString;
 /**
  * @author Damien Raude-Morvan
  */
-@ContextConfiguration(locations = "classpath:/applicationContext.xml")
+@ContextConfiguration(locations = "classpath:/applicationContext-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 public class PubServiceTest {

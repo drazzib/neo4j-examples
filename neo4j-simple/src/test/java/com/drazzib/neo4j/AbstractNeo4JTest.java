@@ -22,6 +22,7 @@ import org.neo4j.test.TestGraphDatabaseFactory;
 
 /**
  * @author Damien Raude-Morvan
+ * @see <a href="http://docs.neo4j.org/chunked/stable/tutorials-java-unit-testing.html">Basic unit testing</a>
  */
 public class AbstractNeo4JTest {
 

@@ -5,13 +5,14 @@ apply plugin: 'eclipse'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
-neo4jServerVersion = "1.9.RC2"
-neo4jRestVersion = "1.9-SNAPSHOT"
+neo4jServerVersion = "1.8.2"
+neo4jRestVersion = "1.8.1"
 
 repositories {
     mavenCentral()
     // for neo4j-rest-graphdb
     maven { url "http://m2.neo4j.org/content/repositories/snapshots/" }
+    maven { url "http://m2.neo4j.org/content/repositories/releases/" }
 }
 
 dependencies {

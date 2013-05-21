@@ -12,7 +12,7 @@ import org.junit.Test;
 /**
  * @author Damien Raude-Morvan
  */
-public class Neo4jWrapperTest {
+public class Neo4jGremlinTest {
 
     private Neo4jWrapper wrapper;
 
@@ -58,7 +58,9 @@ public class Neo4jWrapperTest {
 
         // Create a pipeline
         GremlinPipeline pipe = new GremlinPipeline();
-        pipe.start(g.getVertex(1)).out("knows").property("name");
+        pipe.start(g.getVertex(1))
+                .out("knows")
+                .property("name");
 
         pipe.next(); // the next String name in the pipe
         pipe.next(5); // the next 5 String names in the pipe as a List
